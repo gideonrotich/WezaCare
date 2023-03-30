@@ -67,4 +67,4 @@ The screenshot below shows the tests that are done on the repo:
 
 The Unit Tests here test the call to the Harry Potter API
 
-<img src="https://github.com/jumaallan/safeboda/blob/master/screenshots/unit_test_core.png"/>
+<img src="screenshots/api.jpeg"/>

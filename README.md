@@ -17,7 +17,7 @@ working properly.
 ## Screenshots
 I added some screenshots in the screenshots folder, in the root directory of the project and a GIF to show end to end test on the app.
 
-<img src="screenshots/four.png" width="250"/> <img src="screenshots/two.jpeg" width="250"/> <img src="screenshots/three.jpeg" width="250"/>
+<img src="screenshots/four.png" width="250"/> <img src="screenshots/moja.png" width="250"/> <img src="screenshots/three.jpeg" width="250"/>
 
 ## Prerequisites
 Before running the application, you need to add your Github Personal Access Token in your `gradle.properties` file.

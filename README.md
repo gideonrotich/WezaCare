@@ -19,19 +19,10 @@ I added some screenshots in the screenshots folder, in the root directory of the
 
 <img src="screenshots/moja.png" width="270"/> <img src="screenshots/mbili.png" width="270"/> <img src="screenshots/tatu.png" width="270"/>
 
-## Prerequisites
-Before running the application, you need to add your Github Personal Access Token in your `gradle.properties` file.
-
-`ACCESS_TOKEN = "***"`
-
-To build a debug APK, open a command line and navigate to the root of your project directory — from Android Studio and run the following command:
-
-`./gradlew assembleDebug`
-
 ## App architecture
 The Android application gathers the layers into three packages:
 
-<p><img src="screenshorts/mad-arch-overview.png"  width="400"  height="250" alt="Architecture Diagram"></p>
+<p><img src="screenshots/mad-arch-overview.png"  width="400"  height="250" alt="Architecture Diagram"></p>
 
 ### UI (Presentation) layer
 The role of the UI layer (or presentation layer) is to display the application data on the screen. Whenever the data changes, either due to user interaction (such as pressing a button) or external input (such as a network response), the UI should update to reflect the changes.

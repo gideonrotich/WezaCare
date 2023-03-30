@@ -58,3 +58,13 @@ The data layer of an app contains the business logic. The business logic is what
 
 - CI/CD:
     - [GitHub Actions](https://github.com/features/actions) - GitHub Actions makes it easy to automate all your software workflows, now with world-class CI/CD. Build, test, and deploy your code right from GitHub. Make code reviews, branch management, and issue triaging work the way you want.
+    
+## UI and Unit Tests
+
+The screenshot below shows the tests that are done on the repo:
+
+#### Unit Tests on Network Module
+
+The Unit Tests here test the call to the Harry Potter API
+
+<img src="https://github.com/jumaallan/safeboda/blob/master/screenshots/unit_test_core.png"/>

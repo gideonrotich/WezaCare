@@ -1,4 +1,4 @@
-### WezaCare Android Engineer Test
+### WezaCare Android Developer Test
 
 ## User Stories
 Build an app using kotlin/Java on android using harry potter data from the Harry Potter public API
@@ -15,7 +15,7 @@ displayed in a list view.
 working properly.
 
 ## Screenshots
-I added some screenshots in the screenshots folder, in the root directory of the project and a GIF to show end to end test on the app.
+I added some screenshots in the screenshots folder, in the root directory of the project to show end to end test on the app.
 
 <img src="screenshots/moja.png" width="270"/> <img src="screenshots/mbili.png" width="270"/> <img src="screenshots/tatu.png" width="270"/>
 

@@ -19,19 +19,10 @@ I added some screenshots in the screenshots folder, in the root directory of the
 
 <img src="screenshots/moja.png" width="270"/> <img src="screenshots/mbili.png" width="270"/> <img src="screenshots/tatu.png" width="270"/>
 
-## Prerequisites
-Before running the application, you need to add your Github Personal Access Token in your `gradle.properties` file.
-
-`ACCESS_TOKEN = "***"`
-
-To build a debug APK, open a command line and navigate to the root of your project directory — from Android Studio and run the following command:
-
-`./gradlew assembleDebug`
-
 ## App architecture
 The Android application gathers the layers into three packages:
 
-<p><img src="screenshorts/mad-arch-overview.png"  width="400"  height="250" alt="Architecture Diagram"></p>
+<p><img src="screenshots/mad-arch-overview.png"  width="400"  height="250" alt="Architecture Diagram"></p>
 
 ### UI (Presentation) layer
 The role of the UI layer (or presentation layer) is to display the application data on the screen. Whenever the data changes, either due to user interaction (such as pressing a button) or external input (such as a network response), the UI should update to reflect the changes.
@@ -67,3 +58,13 @@ The data layer of an app contains the business logic. The business logic is what
 
 - CI/CD:
     - [GitHub Actions](https://github.com/features/actions) - GitHub Actions makes it easy to automate all your software workflows, now with world-class CI/CD. Build, test, and deploy your code right from GitHub. Make code reviews, branch management, and issue triaging work the way you want.
+    
+## UI and Unit Tests
+
+The screenshot below shows the tests that are done on the repo:
+
+#### Unit Tests on Network Module
+
+The Unit Tests here test the call to the Harry Potter API
+
+<img src="https://github.com/jumaallan/safeboda/blob/master/screenshots/unit_test_core.png"/>

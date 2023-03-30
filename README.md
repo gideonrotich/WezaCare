@@ -1,4 +1,4 @@
-### WezaCare Android Engineer Test
+### WezaCare Android Developer Test
 
 ## User Stories
 Build an app using kotlin/Java on android using harry potter data from the Harry Potter public API
@@ -15,7 +15,7 @@ displayed in a list view.
 working properly.
 
 ## Screenshots
-I added some screenshots in the screenshots folder, in the root directory of the project and a GIF to show end to end test on the app.
+I added some screenshots in the screenshots folder, in the root directory of the project to show end to end test on the app.
 
 <img src="screenshots/moja.png" width="270"/> <img src="screenshots/mbili.png" width="270"/> <img src="screenshots/tatu.png" width="270"/>
 
@@ -42,7 +42,6 @@ The data layer of an app contains the business logic. The business logic is what
     - [Lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle) - Lifecycle-aware components perform actions in response to a change in the lifecycle status of another component, such as activities and fragments. These components help you produce better-organized, and often lighter-weight code, that is easier to maintain.
     - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) -The ViewModel class is designed to store and manage UI-related data in a lifecycle conscious way.
     - [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) - LiveData is an observable data holder class. Unlike a regular observable, LiveData is lifecycle-aware, meaning it respects the lifecycle of other app components, such as activities, fragments, or services. This awareness ensures LiveData only updates app component observers that are in an active lifecycle state.
-    - [Paging 3 library](https://developer.android.com/topic/libraries/architecture/paging/v3-overview) - The Paging library helps you load and display pages of data from a larger dataset from local storage or over network. This approach allows your app to use both network bandwidth and system resources more efficiently.
     - [Room database](https://developer.android.com/training/data-storage/room) - The Room persistence library provides an abstraction layer over SQLite to allow fluent database access while harnessing the full power of SQLite.
     - [Preferences DataStore](https://developer.android.com/topic/libraries/architecture/datastore) - Jetpack DataStore is a data storage solution that allows you to store key-value pairs or typed objects with protocol buffers. DataStore uses Kotlin coroutines and Flow to store data asynchronously, consistently, and transactionally.
 
@@ -56,8 +55,6 @@ The data layer of an app contains the business logic. The business logic is what
 - [Coil](https://coil-kt.github.io/coil/compose/)- An image loading library for Android backed by Kotlin Coroutines.
 - [Timber](https://github.com/JakeWharton/timber)- A logger with a small, extensible API which provides utility on top of Android's normal Log class.
 
-- CI/CD:
-    - [GitHub Actions](https://github.com/features/actions) - GitHub Actions makes it easy to automate all your software workflows, now with world-class CI/CD. Build, test, and deploy your code right from GitHub. Make code reviews, branch management, and issue triaging work the way you want.
     
 ## UI and Unit Tests
 
@@ -67,4 +64,4 @@ The screenshot below shows the tests that are done on the repo:
 
 The Unit Tests here test the call to the Harry Potter API
 
-<img src="https://github.com/jumaallan/safeboda/blob/master/screenshots/unit_test_core.png"/>
+<img src="screenshots/api.jpeg"/>

@@ -64,14 +64,13 @@ class MainActivity : ComponentActivity() {
                     val newBackStackEntry by navController.currentBackStackEntryAsState()
                     val route = newBackStackEntry?.destination?.route
 
-                        Box(modifier = Modifier.padding(10.dp)) {
-                            AppNavigation(
-                                navController = navController,
-                                modifier = Modifier
-                                    .fillMaxSize()
-                            )
-                        }
-
+                    Box(modifier = Modifier.padding(10.dp)) {
+                        AppNavigation(
+                            navController = navController,
+                            modifier = Modifier
+                                .fillMaxSize()
+                        )
+                    }
                 }
             }
         }

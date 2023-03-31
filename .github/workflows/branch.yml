@@ -1,8 +1,8 @@
-name: master
+name: branch
 
 on:
   push:
-    branches: [ master ]
+    branches-ignore: [ master, develop, release ]
 
 env:
   CACHE_BUNDLER: ~/.bundler
@@ -43,11 +43,11 @@ jobs:
       - name: install dependencies
         run: gem install bundler && bundle install
 
-      - name: fastlane develop
-        uses: maierj/fastlane-action@v1.4.0
+      - name: fastlane android test
+        uses: maierj/fastlane-action@v2.0.0
         with:
-          lane: develop
-          options: '{ "conf": "release" }'
+          lane: branch
+          options: '{ "conf": "debug" }'
           skip-tracking: false
           subdirectory: fastlane
           bundle-install-path: CACHE_BUNDLER

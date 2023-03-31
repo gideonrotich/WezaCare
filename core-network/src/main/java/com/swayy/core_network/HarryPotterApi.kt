@@ -22,4 +22,6 @@ import retrofit2.http.GET
 interface HarryPotterApi {
     @GET(GET_CHARACTERS)
     suspend fun getCharacters(): HarrypotterResponseDto
+
+    val test = BuildConfig.MY_ACCESS_TOKEN
 }

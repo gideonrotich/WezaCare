@@ -11,6 +11,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Write key file
+        env:
+          AUTH: ${{ secrets.QA_KEYSTORE }}
+        run: echo $AUTH | base64 --decode > /tmp/keystore
+
       - name: Checkout the repository
         uses: actions/checkout@v2
 

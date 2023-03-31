@@ -59,7 +59,7 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.2")
     implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
 
-    androidTestImplementation ("com.squareup.okhttp3:mockwebserver:4.9.1")
+    androidTestImplementation("com.squareup.okhttp3:mockwebserver:4.9.1")
 
     // Chucker
     debugImplementation("com.github.chuckerteam.chucker:library:3.5.2")

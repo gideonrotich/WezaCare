@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Joel Kanyi.
+ * Copyright 2022 GradleBuildPlugins
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,6 @@
  */
 package com.swayy.core.util
 
-import android.content.Context
-import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.graphics.ImageDecoder
-import android.net.Uri
-import android.os.Build
-import android.provider.MediaStore
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
@@ -35,13 +28,10 @@ import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.google.gson.Gson
 import java.io.IOException
-import java.text.SimpleDateFormat
-import java.util.*
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 import timber.log.Timber
-
 
 suspend fun <T> safeApiCall(
     dispatcher: CoroutineDispatcher,
@@ -115,4 +105,3 @@ fun LottieAnim(
         composition = composition
     )
 }
-

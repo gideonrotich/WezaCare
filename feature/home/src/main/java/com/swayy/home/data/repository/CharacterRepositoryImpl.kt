@@ -1,3 +1,18 @@
+/*
+ * Copyright 2023 GradleBuildPlugins
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.swayy.home.data.repository
 
 import androidx.lifecycle.map
@@ -8,10 +23,10 @@ import com.swayy.home.data.mapper.toDomain
 import com.swayy.home.data.mapper.toEntity
 import com.swayy.home.domain.model.CharacterModel
 import com.swayy.home.domain.repository.CharactersRepository
+import java.io.IOException
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
-import java.io.IOException
 
 class CharacterRepositoryImpl(
     private val harryPotterApi: HarryPotterApi,
@@ -45,5 +60,4 @@ class CharacterRepositoryImpl(
         val allCharacters = characterDao.getCharacters().map { it.toDomain() }
         emit(Resource.Success(allCharacters))
     }
-
 }

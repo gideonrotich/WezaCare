@@ -1,10 +1,16 @@
 plugins {
-    id ("com.android.application")
-    id ("org.jetbrains.kotlin.android")
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
     id("dagger.hilt.android.plugin")
     id("kotlin-parcelize")
     id("kotlin-kapt")
     id("com.google.devtools.ksp") version ("1.7.20-1.0.8")
+    id("org.jlleitschuh.gradle.ktlint")
+    id("com.hiya.jacoco-android")
+}
+
+jacoco {
+    toolVersion = "0.8.7"
 }
 
 apply {
@@ -32,23 +38,23 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
             )
         }
     }
     compileOptions {
-        sourceCompatibility  = JavaVersion.VERSION_1_8
-        targetCompatibility  = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = "1.8"
     }
     buildFeatures {
-        compose  = true
+        compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion =  "1.3.2"
+        kotlinCompilerExtensionVersion = "1.3.2"
     }
     packagingOptions {
         resources {
@@ -64,6 +70,10 @@ android {
     }
 }
 
+// ktlintFormat task will need to run before preBuild
+tasks.getByPath("preBuild")
+    .dependsOn("ktlintFormat")
+
 dependencies {
 
     implementation(project(":core"))
@@ -75,5 +85,5 @@ dependencies {
 
     // Splash Screen API
     implementation("androidx.core:core-splashscreen:1.0.0")
-    implementation ("com.google.accompanist:accompanist-systemuicontroller:0.29.1-alpha")
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.29.1-alpha")
 }

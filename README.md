@@ -54,6 +54,18 @@ The data layer of an app contains the business logic. The business logic is what
 - [Logging Interceptor](https://github.com/square/okhttp/blob/master/okhttp-logging-interceptor/README.md) -  logs HTTP request and response data.
 - [Coil](https://coil-kt.github.io/coil/compose/)- An image loading library for Android backed by Kotlin Coroutines.
 - [Timber](https://github.com/JakeWharton/timber)- A logger with a small, extensible API which provides utility on top of Android's normal Log class.
+* Gradle
+    * [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
+    * Plugins
+        * [Spotless](https://github.com/diffplug/spotless)
+        * [Dokka](https://github.com/Kotlin/dokka)
+        * [jacoco](https://github.com/jacoco/jacoco)
+        * [Ktlint](https://github.com/JLLeitschuh/ktlint-gradle)
+        * [Detekt](https://github.com/detekt/detekt)
+
+* CI/CD
+    * Github Actions
+    * [Fastlane](https://fastlane.tools)
 
     
 ## UI and Unit Tests

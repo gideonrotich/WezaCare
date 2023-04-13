@@ -23,7 +23,7 @@ import com.swayy.core.util.Constants.THEME_OPTIONS
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-class MealTimePreferences(
+class HarryPotterPreferences(
     private val dataStore: DataStore<Preferences>
 ) {
     suspend fun saveTheme(themeValue: Int) {

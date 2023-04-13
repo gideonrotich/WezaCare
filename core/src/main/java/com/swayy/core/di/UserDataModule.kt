@@ -20,7 +20,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStoreFile
-import com.swayy.core.data.MealTimePreferences
+import com.swayy.core.data.HarryPotterPreferences
 import com.swayy.core.data.UserDataRepositoryImpl
 import com.swayy.core.domain.UserDataRepository
 import com.swayy.core.util.Constants
@@ -37,13 +37,13 @@ object UserDataModule {
 
     @Provides
     @Singleton
-    fun provideMealTimePreferences(dataStore: DataStore<Preferences>) =
-        MealTimePreferences(dataStore)
+    fun provideHarryPotterPreferences(dataStore: DataStore<Preferences>) =
+        HarryPotterPreferences(dataStore)
 
     @Provides
     @Singleton
-    fun provideUserDataRepository(mealTimePreferences: MealTimePreferences): UserDataRepository {
-        return UserDataRepositoryImpl(mealTimePreferences = mealTimePreferences)
+    fun provideUserDataRepository(harryPotterPreferences: HarryPotterPreferences): UserDataRepository {
+        return UserDataRepositoryImpl(harryPotterPreferences = harryPotterPreferences)
     }
 
     @Provides
@@ -51,7 +51,7 @@ object UserDataModule {
     fun provideDatastorePreferences(@ApplicationContext context: Context): DataStore<Preferences> =
         PreferenceDataStoreFactory.create(
             produceFile = {
-                context.preferencesDataStoreFile(Constants.MEALTIME_PREFERENCES)
+                context.preferencesDataStoreFile(Constants.HARRYPOTTER_PREFERENCES)
             }
         )
 }

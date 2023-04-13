@@ -20,6 +20,5 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 
 object Constants {
     val THEME_OPTIONS = intPreferencesKey(name = "theme_option")
-    const val MEALTIME_PREFERENCES = "MEALTIME_PREFERENCES"
-    val WALLET_ADDRESS = stringPreferencesKey("wallet_address")
+    const val HARRYPOTTER_PREFERENCES = "HARRYPOTTER_PREFERENCES"
 }

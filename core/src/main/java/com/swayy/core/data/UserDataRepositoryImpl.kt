@@ -19,12 +19,12 @@ import com.swayy.core.domain.UserDataRepository
 import kotlinx.coroutines.flow.Flow
 
 class UserDataRepositoryImpl(
-    private val mealTimePreferences: MealTimePreferences
+    private val harryPotterPreferences: HarryPotterPreferences
 ) : UserDataRepository {
     override val themeStream: Flow<Int>
-        get() = mealTimePreferences.getTheme
+        get() = harryPotterPreferences.getTheme
 
     override suspend fun setTheme(themeValue: Int) {
-        mealTimePreferences.saveTheme(themeValue = themeValue)
+        harryPotterPreferences.saveTheme(themeValue = themeValue)
     }
 }

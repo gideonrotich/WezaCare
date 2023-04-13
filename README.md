@@ -1,4 +1,6 @@
 ### WezaCare Android Developer Test
+![Tests](https://github.com/google/secrets-gradle-plugin/workflows/Tests/badge.svg)
+![Apache-2.0](https://img.shields.io/badge/license-Apache-blue)
 
 ## User Stories
 Build an app using kotlin/Java on android using harry potter data from the Harry Potter public API

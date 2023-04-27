@@ -17,6 +17,8 @@
             <option value="$PROJECT_DIR$/core-network" />
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/home" />
+            <option value="$PROJECT_DIR$/sync" />
+            <option value="$PROJECT_DIR$/sync/work" />
           </set>
         </option>
       </GradleProjectSettings>

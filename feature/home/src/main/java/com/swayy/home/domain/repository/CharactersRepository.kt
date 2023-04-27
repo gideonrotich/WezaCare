@@ -16,10 +16,12 @@
 package com.swayy.home.domain.repository
 
 import com.swayy.core.util.Resource
+import com.swayy.core.work.NetworkChangeList
+import com.swayy.core.work.Syncable
 import com.swayy.home.domain.model.CharacterModel
 import kotlinx.coroutines.flow.Flow
 
-interface CharactersRepository {
+interface CharactersRepository: Syncable {
 
     fun getCharacters(): Flow<Resource<List<CharacterModel>>>
 }

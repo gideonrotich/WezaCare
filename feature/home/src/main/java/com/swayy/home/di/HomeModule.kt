@@ -15,10 +15,12 @@
  */
 package com.swayy.home.di
 
+import com.swayy.core.work.NetworkChangeList
 import com.swayy.core_database.dao.CharacterDao
 import com.swayy.core_network.HarryPotterApi
 import com.swayy.home.data.repository.CharacterRepositoryImpl
 import com.swayy.home.domain.repository.CharactersRepository
+import com.swayy.home.domain.repository.NiaNetworkDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,13 +32,25 @@ import javax.inject.Singleton
 object HomeModule {
 
     @Provides
+    fun provideNiaNetworkDataSource(): NiaNetworkDataSource {
+        return NiaNetworkDataSourceImpl()
+    }
+    @Provides
     @Singleton
     fun provideCharactersRepository(
         harryPotterApi: HarryPotterApi,
-        characterDao: CharacterDao
+        characterDao: CharacterDao,
+        network:NiaNetworkDataSource
     ): CharactersRepository {
         return CharacterRepositoryImpl(
-            harryPotterApi = harryPotterApi, characterDao = characterDao
+            harryPotterApi = harryPotterApi, characterDao = characterDao,network = network
         )
     }
+}
+
+class NiaNetworkDataSourceImpl : NiaNetworkDataSource {
+    override suspend fun getTopicChangeList(after: Int?): List<NetworkChangeList> {
+        TODO("Not yet implemented")
+    }
+
 }

@@ -27,6 +27,6 @@ interface CharacterDao {
     @Query("SELECT * FROM characters_table")
     fun getCharacters(): List<CharacterEntity>
 
-    @Query("DELETE FROM characters_table")
-    suspend fun deleteCharacters()
+    @Query("DELETE FROM characters_table WHERE id in (:ids)")
+    suspend fun deleteCharacters(ids: List<String>)
 }

@@ -17,12 +17,17 @@ package com.swayy.home.data.repository
 
 import androidx.lifecycle.map
 import com.swayy.core.util.Resource
+import com.swayy.core.work.ChangeListVersions
+import com.swayy.core.work.NetworkChangeList
+import com.swayy.core.work.Synchronizer
+import com.swayy.core.work.changeListSync
 import com.swayy.core_database.dao.CharacterDao
 import com.swayy.core_network.HarryPotterApi
 import com.swayy.home.data.mapper.toDomain
 import com.swayy.home.data.mapper.toEntity
 import com.swayy.home.domain.model.CharacterModel
 import com.swayy.home.domain.repository.CharactersRepository
+import com.swayy.home.domain.repository.NiaNetworkDataSource
 import java.io.IOException
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -30,7 +35,8 @@ import retrofit2.HttpException
 
 class CharacterRepositoryImpl(
     private val harryPotterApi: HarryPotterApi,
-    private val characterDao: CharacterDao
+    private val characterDao: CharacterDao,
+    private val network: NiaNetworkDataSource,
 ) : CharactersRepository {
     override fun getCharacters(): Flow<Resource<List<CharacterModel>>> = flow {
         emit(Resource.Loading())
@@ -40,7 +46,7 @@ class CharacterRepositoryImpl(
 
         try {
             val apiResponse = harryPotterApi.getCharacters()
-            characterDao.deleteCharacters()
+            characterDao.deleteCharacters(ids = emptyList())
             characterDao.insertCharacters(apiResponse.map { it.toEntity() })
         } catch (exception: IOException) {
             emit(
@@ -60,4 +66,23 @@ class CharacterRepositoryImpl(
         val allCharacters = characterDao.getCharacters().map { it.toDomain() }
         emit(Resource.Success(allCharacters))
     }
+
+
+    override suspend fun syncWith(synchronizer: Synchronizer): Boolean =
+        synchronizer.changeListSync(
+            versionReader = ChangeListVersions::topicVersion,
+            changeListFetcher = { currentVersion ->
+                network.getTopicChangeList(after = currentVersion)
+            },
+            versionUpdater = { latestVersion ->
+                copy(topicVersion = latestVersion)
+            },
+            modelDeleter = characterDao::deleteCharacters,
+            modelUpdater = { changedIds ->
+                val networkTopics = harryPotterApi.getCharacters()
+                characterDao.insertCharacters(
+                    networkTopics.map { it.toEntity() },
+                )
+            },
+        )
 }

@@ -1,11 +1,11 @@
 /*
- * Copyright 2023 Gideon Rotich
+ * Copyright 2022 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,17 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.swayy.wezacare
 
-import android.app.Application
-import com.swayy.work.initializers.Sync
-import dagger.hilt.android.HiltAndroidApp
+package com.swayy.home.domain.repository
 
-@HiltAndroidApp
-class HarryPotterApp : Application() {
-    override fun onCreate() {
-        super.onCreate()
-        // Initialize Sync; the system responsible for keeping data in the app up to date.
-        Sync.initialize(context = this)
-    }
+import com.swayy.core.work.NetworkChangeList
+
+/**
+ * Interface representing network calls to the NIA backend
+ */
+interface NiaNetworkDataSource {
+
+    suspend fun getTopicChangeList(after: Int? = null): List<NetworkChangeList>
+
 }

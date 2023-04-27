@@ -51,6 +51,26 @@ dependencies {
     // collapsing Toolbar
     implementation("me.onebone:toolbar-compose:2.3.5")
 
+    //work
+    // Kotlin + coroutines
+    implementation "androidx.work:work-runtime-ktx:2.8.1"
+
+    // optional - GCMNetworkManager support
+    implementation "androidx.work:work-gcm:2.8.1"
+
+    // optional - Test helpers
+    androidTestImplementation "androidx.work:work-testing:2.8.1"
+
+    // optional - Multiprocess support
+    implementation "androidx.work:work-multiprocess:2.8.1"
+    implementation 'androidx.hilt:hilt-work:1.0.0'
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1'
+
+    //tracing
+    implementation 'androidx.tracing:tracing:1.0.0'
+    implementation 'androidx.tracing:tracing-ktx:1.1.0'
+
 
     // Swipe to refresh
     implementation("com.google.accompanist:accompanist-swiperefresh:0.27.1")

@@ -1,16 +1,10 @@
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
     id("kotlin-parcelize")
-    id("kotlin-kapt")
-    id("com.google.devtools.ksp") version ("1.7.20-1.0.8")
-    id("org.jlleitschuh.gradle.ktlint")
-    id("com.hiya.jacoco-android")
-}
-
-jacoco {
-    toolVersion = "0.8.7"
+    id ("org.jetbrains.kotlin.plugin.serialization")
 }
 
 apply {
@@ -18,20 +12,15 @@ apply {
 }
 
 android {
-    namespace = "com.swayy.wezacare"
+    namespace = "com.swayy.work"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.swayy.wezacare"
         minSdk = 24
         targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -61,30 +50,20 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-    applicationVariants.all {
-        kotlin.sourceSets {
-            getByName(name) {
-                kotlin.srcDir("build/generated/ksp/$name/kotlin")
-            }
-        }
-    }
 }
-
-// ktlintFormat task will need to run before preBuild
-tasks.getByPath("preBuild")
-    .dependsOn("ktlintFormat")
 
 dependencies {
 
     implementation(project(":core"))
+    implementation(project(":core-network"))
+    implementation(project(":core-database"))
     implementation(project(":compose-ui"))
     implementation(project(":feature:home"))
-    implementation(project(":sync:work"))
 
-    implementation("io.github.raamcosta.compose-destinations:animations-core:1.7.32-beta")
-    ksp("io.github.raamcosta.compose-destinations:ksp:1.7.32-beta")
-
-    // Splash Screen API
-    implementation("androidx.core:core-splashscreen:1.0.0")
-    implementation("com.google.accompanist:accompanist-systemuicontroller:0.29.1-alpha")
+    implementation("androidx.core:core-ktx:1.7.0")
+    implementation("androidx.appcompat:appcompat:1.4.1")
+    implementation("com.google.android.material:material:1.5.0")
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }

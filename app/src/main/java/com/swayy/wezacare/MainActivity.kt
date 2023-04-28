@@ -41,6 +41,9 @@ import com.ramcosta.composedestinations.navigation.dependency
 import com.ramcosta.composedestinations.scope.DestinationScope
 import com.swayy.compose_ui.theme.Theme
 import com.swayy.compose_ui.theme.WezaCareTheme
+import com.swayy.favourite.presentation.destinations.FavouriteScreenDestination
+import com.swayy.home.presentation.destinations.HomeScreenDestination
+import com.swayy.wezacare.components.StandardScaffold
 import com.swayy.wezacare.components.navGraph
 import com.swayy.wezacare.navigation.CoreFeatureNavigator
 import com.swayy.wezacare.navigation.NavGraphs
@@ -75,13 +78,22 @@ class MainActivity : ComponentActivity() {
                     val newBackStackEntry by navController.currentBackStackEntryAsState()
                     val route = newBackStackEntry?.destination?.route
 
-                    Box(modifier = Modifier.padding(10.dp)) {
-                        AppNavigation(
-                            navController = navController,
-                            modifier = Modifier
-                                .fillMaxSize()
+                    StandardScaffold(
+                        navController = navController,
+                        showBottomBar = route in listOf(
+                            "home/${HomeScreenDestination.route}",
+                            "favourite/${FavouriteScreenDestination.route}",
                         )
+                    ) { innerPadding ->
+                        Box(modifier = Modifier.padding(10.dp)) {
+                            AppNavigation(
+                                navController = navController,
+                                modifier = Modifier
+                                    .fillMaxSize()
+                            )
+                        }
                     }
+
                 }
             }
         }
@@ -100,6 +112,20 @@ internal fun AppNavigation(
         rootDefaultAnimations = RootNavGraphDefaultAnimations.ACCOMPANIST_FADING, // default `rootDefaultAnimations` means no animations
         defaultAnimationsForNestedNavGraph = mapOf(
             NavGraphs.home to NestedNavGraphDefaultAnimations(
+                enterTransition = {
+                    scaleInEnterTransition()
+                },
+                exitTransition = {
+                    scaleOutExitTransition()
+                },
+                popEnterTransition = {
+                    scaleInPopEnterTransition()
+                },
+                popExitTransition = {
+                    scaleOutPopExitTransition()
+                }
+            ),
+            NavGraphs.favourite to NestedNavGraphDefaultAnimations(
                 enterTransition = {
                     scaleInEnterTransition()
                 },

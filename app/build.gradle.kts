@@ -79,6 +79,7 @@ dependencies {
     implementation(project(":core"))
     implementation(project(":compose-ui"))
     implementation(project(":feature:home"))
+    implementation(project(":feature:favourite"))
     implementation(project(":sync:work"))
 
     implementation("io.github.raamcosta.compose-destinations:animations-core:1.7.32-beta")

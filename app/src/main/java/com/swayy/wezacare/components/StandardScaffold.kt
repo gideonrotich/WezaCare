@@ -15,6 +15,14 @@
  */
 package com.swayy.wezacare.components
 
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.Text
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.Stable
@@ -22,16 +30,97 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
+import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavOptionsBuilder
+import com.ramcosta.composedestinations.navigation.navigate
 import com.ramcosta.composedestinations.spec.NavGraphSpec
+import com.swayy.wezacare.BottomNavItem
 import com.swayy.wezacare.navigation.NavGraphs
 
 /**
  * Adds an [NavController.OnDestinationChangedListener] to this [NavController] and updates the
  * returned [State] which is updated as the destination changes.
  */
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun StandardScaffold(
+    navController: NavController,
+    showBottomBar: Boolean = true,
+    items: List<BottomNavItem> = listOf(
+        BottomNavItem.Home,
+        BottomNavItem.Favourite,
+    ),
+    content: @Composable (paddingValues: PaddingValues) -> Unit
+) {
+    Scaffold(
+        bottomBar = {
+            if (showBottomBar) {
+                val currentSelectedItem by navController.currentScreenAsState()
+
+                BottomNavigation(
+                    backgroundColor = MaterialTheme.colorScheme.background,
+                    // contentColor = MaterialTheme.colorScheme.onBackground,
+                    elevation = 5.dp
+                ) {
+                    items.forEach { item ->
+                        BottomNavigationItem(
+                            icon = {
+                                Icon(
+                                    painterResource(id = item.icon),
+                                    contentDescription = item.title,
+                                    tint = if (currentSelectedItem == item.screen) {
+                                        MaterialTheme.colorScheme.primary
+                                    } else {
+                                        MaterialTheme.colorScheme.onSurfaceVariant
+                                    }
+                                )
+                            },
+                            label = {
+                                Text(
+                                    text = item.title,
+                                    fontSize = 9.sp,
+                                    color = if (currentSelectedItem == item.screen) {
+                                        MaterialTheme.colorScheme.primary
+                                    } else {
+                                        MaterialTheme.colorScheme.onSurfaceVariant
+                                    },
+                                    fontWeight = if (currentSelectedItem == item.screen) {
+                                        FontWeight.ExtraBold
+                                    } else {
+                                        FontWeight.Normal
+                                    }
+                                )
+                            },
+                            alwaysShowLabel = true,
+                            selected = currentSelectedItem == item.screen,
+                            onClick = {
+                                navController.navigate(item.screen, fun NavOptionsBuilder.() {
+                                    launchSingleTop = true
+                                    restoreState = true
+
+                                    popUpTo(navController.graph.findStartDestination().id) {
+                                        saveState = true
+                                    }
+                                })
+                            }
+                        )
+                    }
+                }
+            }
+        }
+    ) { paddingValues ->
+        content(paddingValues)
+    }
+}
+
 @Stable
 @Composable
 fun NavController.currentScreenAsState(): State<NavGraphSpec> {

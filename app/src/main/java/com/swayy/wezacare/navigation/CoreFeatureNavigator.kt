@@ -19,6 +19,8 @@ import androidx.navigation.NavController
 import com.ramcosta.composedestinations.dynamic.within
 import com.ramcosta.composedestinations.navigation.navigate
 import com.ramcosta.composedestinations.spec.NavGraphSpec
+import com.swayy.favourite.presentation.FavouriteNavigator
+import com.swayy.favourite.presentation.destinations.FavouriteScreenDestination
 import com.swayy.home.presentation.destinations.DetailsScreenDestination
 import com.swayy.home.presentation.destinations.HomeScreenDestination
 import com.swayy.home.presentation.home.HomeNavigator
@@ -26,10 +28,14 @@ import com.swayy.home.presentation.home.HomeNavigator
 class CoreFeatureNavigator(
     private val navGraph: NavGraphSpec,
     private val navController: NavController
-) : HomeNavigator {
+) : HomeNavigator, FavouriteNavigator {
 
     override fun openHome() {
         navController.navigate(HomeScreenDestination within navGraph)
+    }
+
+    override fun openFavourite() {
+        navController.navigate(FavouriteScreenDestination within navGraph)
     }
 
     override fun popBackStack() {

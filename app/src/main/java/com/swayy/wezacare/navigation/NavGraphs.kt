@@ -18,6 +18,7 @@ package com.swayy.wezacare.navigation
 import com.ramcosta.composedestinations.dynamic.routedIn
 import com.ramcosta.composedestinations.spec.DestinationSpec
 import com.ramcosta.composedestinations.spec.NavGraphSpec
+import com.swayy.favourite.presentation.destinations.FavouriteScreenDestination
 import com.swayy.home.presentation.destinations.DetailsScreenDestination
 import com.swayy.home.presentation.destinations.HomeScreenDestination
 
@@ -35,12 +36,24 @@ object NavGraphs {
             .associateBy { it.route }
     }
 
+    val favourite = object : NavGraphSpec {
+        override val route = "favourite"
+
+        override val startRoute = FavouriteScreenDestination routedIn this
+
+        override val destinationsByRoute = listOf<DestinationSpec<*>>(
+            FavouriteScreenDestination,
+        ).routedIn(this)
+            .associateBy { it.route }
+    }
+
     val root = object : NavGraphSpec {
         override val route = "root"
         override val startRoute = home
         override val destinationsByRoute = emptyMap<String, DestinationSpec<*>>()
         override val nestedNavGraphs = listOf(
-            home
+            home,
+            favourite
         )
     }
 }

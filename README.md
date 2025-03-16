@@ -1,20 +1,4 @@
-### WezaCare Android Developer Test
-![Tests](https://github.com/google/secrets-gradle-plugin/workflows/Tests/badge.svg)
-![Apache-2.0](https://img.shields.io/badge/license-Apache-blue)
-
-## User Stories
-Build an app using kotlin/Java on android using harry potter data from the Harry Potter public API
-Requirements:
-1. The app should have a home screen that displays a list of Harry Potter
-characters retrieved from the API.
-2. When the user clicks on a character, they should be taken to a detail
-screen that displays more information about that character, such as their
-name, role, house, wand, etc.
-3. The app should have a search functionality that allows the user to search
-for a specific character by name or house. The search results should be
-displayed in a list view.
-4. The app should have a unit test that checks if the API integration is
-working properly.
+A mobile app built entirely with Kotlin and Jetpack Compose that prioritizes offline functionality, displaying the current location's weather and a 5-day forecast using Android Jetpack components.
 
 ## Screenshots
 I added some screenshots in the screenshots folder, in the root directory of the project to show end to end test on the app.
@@ -52,7 +36,6 @@ The data layer of an app contains the business logic. The business logic is what
 - [GSON](https://github.com/square/gson) - JSON Parser,used to parse requests on the data layer for Entities and understands Kotlin non-nullable and default parameters.
 - [Kotlin Flow](https://developer.android.com/kotlin/flow) - In coroutines, a flow is a type that can emit multiple values sequentially, as opposed to suspend functions that return only a single value.
 - [Dagger Hilt](https://developer.android.com/training/dependency-injection/hilt-android) - A dependency injection library for Android that reduces the boilerplate of doing manual dependency injection in your project.
-- [Ramcosta Navigation Library](https://composedestinations.rafaelcosta.xyz/) - A KSP library that processes annotations and generates code that uses Official Jetpack Compose Navigation under the hood. It hides the complex, non-type-safe and boilerplate code you would have to write otherwise.
 - [Logging Interceptor](https://github.com/square/okhttp/blob/master/okhttp-logging-interceptor/README.md) -  logs HTTP request and response data.
 - [Coil](https://coil-kt.github.io/coil/compose/)- An image loading library for Android backed by Kotlin Coroutines.
 - [Timber](https://github.com/JakeWharton/timber)- A logger with a small, extensible API which provides utility on top of Android's normal Log class.
@@ -69,13 +52,3 @@ The data layer of an app contains the business logic. The business logic is what
     * Github Actions
     * [Fastlane](https://fastlane.tools)
 
-    
-## UI and Unit Tests
-
-The screenshot below shows the tests that are done on the repo:
-
-#### Unit Tests on Network Module
-
-The Unit Tests here test the call to the Harry Potter API
-
-<img src="screenshots/api.jpeg"/>
